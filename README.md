@@ -1,0 +1,1 @@
+# Equaties_SMA
