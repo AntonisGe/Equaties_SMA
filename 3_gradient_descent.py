@@ -1,10 +1,18 @@
 # For each ticker I have saved a csv file in a folder (the path to that file is 'D:\Back_Test\SMAs\Data_sma\{}.csv').
-# Now to save time, each time a moving average is calcualted, it will store the result in that file under the column name sma{}.format(moving average). def sma() does that.
-# Then we will make a function <def profits(ticker,sma1,sma2)> that will go to that file and if that moving average has not been calculated and stored, it will do exactly that. Then it will calculate the profit for that ticker.
-# Then we will make a function <def metric(*args)> that using multiprocessing it will do the above function for all tickers that we have.
-# Lastly we will have the gradient descent said.
 
-# To run this, you need to have a folder name Temp_Results and one named Results, in the same directory as the py script and also change the path of the data right below.
+# Now to save time, each time a moving average is calcualted, it will store the result in that file under the column name 
+#sma{}.format(moving average). def sma() does that.
+
+# Then we will make a function <def profits(ticker,sma1,sma2)> that will go to that file and if that moving average has not 
+# been calculated and stored, it will do exactly that. Then it will calculate the profit for that ticker.
+
+# Then we will make a function <def metric(*args)> that using multiprocessing it will do the above function for all tickers 
+# that we have.
+
+# Lastly we will have the gradient descent.
+
+# To run this, you need to have a folder name Temp_Results and one named Results, in the same directory as the py script 
+# and also change the path of the data right below.
 # All other files will be self created if they do not exist.
 
 import pandas as pd
@@ -72,8 +80,8 @@ def profits(ticker_sma1_sma2): # we make it as one argument to make it easier fo
     closing_dates=[]
     
     for k in range(1,len(stocks)):
-        if stocks[k-1]==0 and stocks[k]==1:      #if yesterday we had no position in a stock and today we are supposed to be long
-            stock_owned=100/file['Close'][k]          # Then add to our position 100 dollars worth of stock based on today's close.
+        if stocks[k-1]==0 and stocks[k]==1:  #if yesterday we had no position in a stock and today we are supposed to be long
+            stock_owned=100/file['Close'][k]     # Then add to our position 100 dollars worth of stock based on today's close.
             dates.append(file['Date'][k])
 
         elif stocks[k-1]==1 and stocks[k]==0:              #Similary to close a position.
@@ -89,7 +97,8 @@ def profits(ticker_sma1_sma2): # we make it as one argument to make it easier fo
     save['Last date']=[i for i in closing_dates]
     save['Time']=[i for i in time]
     save['Profit']=[i for i in profit]
-    save.to_csv('Temp_Results\{}.csv'.format(ticker),index=False)   # Save that trade in a 'TEMP FILE'. We have to do this to make multiprocessing work.
+    save.to_csv('Temp_Results\{}.csv'.format(ticker),index=False)   
+    # Save that trade in a 'TEMP FILE'. We have to do this to make multiprocessing work.
     
 
 #This function will calculate all profits for a pair of SMA's and return the metric
@@ -188,4 +197,4 @@ if __name__=='__main__':
         save.to_csv('result.csv',index=False)
 
 
-#                                                                                 THANK YOU FOR WATCHING IT!
+#                                                   THANK YOU FOR WATCHING IT!
