@@ -1,4 +1,4 @@
-# Basic logic: For each ticker I have saved a csv file in a folder (the path to that file is 'D:\Back_Test\SMAs\Data_sma\{}.csv').
+# For each ticker I have saved a csv file in a folder (the path to that file is 'D:\Back_Test\SMAs\Data_sma\{}.csv').
 # Now to save time, each time a moving average is calcualted, it will store the result in that file under the column name sma{}.format(moving average). def sma() does that.
 # Then we will make a function <def profits(ticker,sma1,sma2)> that will go to that file and if that moving average has not been calculated and stored, it will do exactly that. Then it will calculate the profit for that ticker.
 # Then we will make a function <def metric(*args)> that using multiprocessing it will do the above function for all tickers that we have.
